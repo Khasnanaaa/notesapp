@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json">
+    <!-- Pastikan Anda memiliki favicon.png di folder public -->
+    <link rel="shortcut icon" href="favicon.png"> 
+
+    <title>StoryApp: Bagikan Cerita Lokasi</title>
+  </head>
+  <body>
+    <!-- Kriteria 4 Advance: Fitur Skip to Content -->
+    <a href="#mainContent" class="skip-link">Skip to Content</a>
+
+    <header>
+      <div class="main-header container">
+        <!-- Pastikan href menggunakan hash routing -->
+        <a class="brand-name" href="#/">StoryApp</a> 
+
+        <!-- Tombol Drawer (untuk mobile) -->
+        <button id="drawer-button" class="drawer-button" aria-label="Buka navigasi">☰</button>
+
+        <!-- Navigasi Utama -->
+        <nav id="navigation-drawer" class="navigation-drawer">
+          <ul id="nav-list" class="nav-list">
+            <li><a href="#/">Beranda</a></li>
+            <li><a href="#/add">Tambah Cerita</a></li>
+            <li><a href="#/favorites">Favorit</a></li> <!-- Rute Kriteria 3 -->
+            
+            <!-- Link Otentikasi: Diatur oleh JavaScript -->
+            <li id="loginLink"><a href="#/login">Login</a></li>
+            <li id="registerLink"><a href="#/register">Register</a></li>
+            <li id="logoutLink" style="display: none;"><a href="#" id="logoutBtn">Logout</a></li>
+            <li><button id="installAppBtn" class="install-button" style="display: none; background: #2196f3; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 4px; width: 100%; margin-top: 10px;">Install App</button></li>
+            
+            <!-- Hapus rute #/about karena tidak relevan dengan kriteria submission -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN: Container Semantik -->
+    <main id="mainContent" class="main-content">
+      <!-- Container SPA: Tempat konten halaman dimuat -->
+      <div id="content">
+        <!-- Konten awal sebelum dimuat oleh JS -->
+        <p>Aplikasi sedang dimuat...</p>
+      </div>
+    </main>
+  </body>
+</html>
