@@ -57,6 +57,10 @@ const IndexedDBUtils = {
   async getAllCachedStories() {
     return (await dbPromise).getAll(STORIES_STORE_NAME);
   },
+  
+  async getCachedStory(id) {
+    return (await dbPromise).get(STORIES_STORE_NAME, id);
+  },
 };
 
 export default IndexedDBUtils;

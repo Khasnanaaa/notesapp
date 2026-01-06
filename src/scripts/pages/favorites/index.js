@@ -5,6 +5,7 @@ const Favorites = {
     return `
       <section class="container">
         <h1>Cerita Favorit (Offline Ready)</h1>
+        <h2>Daftar Cerita Favorit</h2>
         <div id="favorites-list" class="story-grid">
           <p style="text-align: center;">Memuat data favorit...</p>
         </div>
@@ -33,8 +34,10 @@ const Favorites = {
             // Tampilkan di Daftar (menggunakan struktur yang sama dengan Home)
             listHtml += `
                 <div class="story-item">
-                    <img src="${story.photoUrl}" alt="Lokasi cerita oleh ${story.name}" class="story-image">
-                    <h3>${story.name}</h3>
+                    <a href="#/stories/${story.id}" style="text-decoration: none; color: inherit;">
+                        <img src="${story.photoUrl}" alt="Lokasi cerita oleh ${story.name}" class="story-image">
+                        <h3>${story.name}</h3>
+                    </a>
                     <p class="description">${story.description.substring(0, 100)}...</p>
                     <small>Tanggal Disimpan: ${new Date().toLocaleDateString('id-ID')}</small>
                     

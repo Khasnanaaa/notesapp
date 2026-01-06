@@ -132,6 +132,15 @@ const AddStory = {
       } catch (error) {
         btnSubmit.disabled = false;
         btnSubmit.textContent = 'Unggah Cerita Sekarang';
+        
+        // Background Sync Handler (Offline State)
+        // Background Sync Handler (Offline State OR Network Failure)
+        if (!navigator.onLine || error.message.includes('Failed to fetch')) {
+             alert('Koneksi terganggu (Offline). Cerita telah disimpan dan akan diupload otomatis ketika koneksi kembali!');
+             window.location.hash = '#/'; 
+             return;
+        }
+
         messageStatus.style.color = 'red';
         messageStatus.textContent = `Gagal: ${error.message}`;
       }

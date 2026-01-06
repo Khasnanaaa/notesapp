@@ -9,6 +9,22 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
+.skip-link {
+   position: absolute;
+   top: -100px;
+   left: 0;
+   background: #bf1722;
+   color: white;
+   padding: 8px;
+   z-index: 10000; /* Ensure high z-index */
+   text-decoration: none;
+   transition: top 0.3s;
+}
+
+.skip-link:focus {
+   top: 0;
+}
+
 .container {
   padding-inline: 32px;
   margin-inline: auto;

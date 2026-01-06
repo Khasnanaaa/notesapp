@@ -51,6 +51,30 @@ const StoryApi = {
     }
     return responseJson.listStory.filter(story => story.lat && story.lon);
   },
+
+  async getStoryById(id) {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+       throw new Error('User not logged in');
+    }
+
+    const response = await fetch(`${API_URL}/stories/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    
+    // Check 404/others
+    if (!response.ok) {
+        throw new Error('Failed to fetch story detail');
+    }
+
+    const responseJson = await response.json();
+    if (responseJson.error) {
+      throw new Error(responseJson.message);
+    }
+    return responseJson.story;
+  },
   
   async addNewStory({ description, lat, lon, photo }) {
     const token = localStorage.getItem('userToken');

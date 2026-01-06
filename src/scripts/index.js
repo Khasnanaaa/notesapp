@@ -2,6 +2,7 @@ import 'regenerator-runtime';
 import '../styles/styles.css'; 
 import routes from './routes/routes';
 import StoryApi from './data/story-api'; 
+import UrlParser from './routes/url-parser'; 
 
 import {
   isCurrentPushSubscriptionAvailable,
@@ -81,9 +82,9 @@ const app = {
   
   async renderPage() {
     this.updateNavVisibility(); 
-    const url = window.location.hash.slice(1).toLowerCase();
-    const path = url || '/'; 
-    const page = routes[path];
+    this.updateNavVisibility(); 
+    const url = UrlParser.getActiveRoute();
+    const page = routes[url];
 
     if (page) {
       const renderContent = async () => {
@@ -127,10 +128,21 @@ const app = {
       console.log('PWA was installed');
     });
   },
+  
+  _initSkipLink() {
+     const skipLink = document.querySelector('.skip-link');
+     const mainContent = document.querySelector('#mainContent');
+  
+     skipLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        mainContent.focus();
+     });
+  },
 
   init() {
     this._registerServiceWorker(); 
     this._initInstallPrompt();
+    this._initSkipLink();
     window.addEventListener('hashchange', () => this.renderPage()); 
     window.addEventListener('load', () => this.renderPage()); 
     if (this.drawerButton) {

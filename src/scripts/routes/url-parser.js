@@ -44,3 +44,12 @@ export function getRoute(pathname) {
 export function parsePathname(pathname) {
   return extractPathnameSegments(pathname);
 }
+const UrlParser = {
+  getActivePathname,
+  getActiveRoute,
+  parseActivePathname,
+  getRoute,
+  parsePathname,
+};
+
+export default UrlParser;
